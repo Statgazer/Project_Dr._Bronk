@@ -65,8 +65,8 @@ for url in URL:
     df = df.append(url_data_dict, ignore_index=True)
 
 
-path = "/Users/roshen_abraham/Desktop/PC/RA/DR. CHRIS BRONK/project/target files/output.csv"
-df.to_csv(path, index=False)
+#path = 
+df.to_csv("/Users/roshen_abraham/Desktop/PC/RA/DR. CHRIS BRONK/project/target files/output.csv", index=False)
 
 
 

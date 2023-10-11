@@ -1,0 +1,35 @@
+Azerbaijani President Ilham Aliyev has refused to participate in a meeting with the leaders of Armenia, France, Germany and the European Council that was scheduled to take place in the Spanish city of Granada on October 5, the Azerbaijani news agency APA reported.
+
+"Azerbaijan has refused to participate in the five-party meeting that was planned to take place in Spain's Granada on October 5," the report said.
+
+According to the report, Azerbaijan proposed to invite Turkish President Recep Tayyip Erdogan to come to the talks, but Paris and Berlin opposed the idea. The report named this disagreement as one of the reasons for the meeting being scrapped. Another reason, according to the news agency, was the recent pro-Armenian statements by France and European Council President Charles Michel. Azerbaijan, for example, pointed to France's plans to supply arms to Armenia.
+
+Besides, the report said Baku does feel compelled to discuss regional issues with countries that are located far away from the area in question. The news agency said Azerbaijan could instead participate in a trilateral meeting involving Armenia and the EU.
+
+"No format with the participation of France is acceptable for Azerbaijan. Baku will not attend such a platform," the report said.
+
+The meeting was planned to take place on the sidelines of the European Political Community Summit. The leaders of Azerbaijan and Armenia previously met on the sidelines of the European Political Community summits in Prague and Chisinau. The latest meeting, in Prague, was attended by French President Emmanuel Macron and Charles Michel. The talks in Chisinau involved France, Germany and the EU.
+
+
+cost_values = []
+
+for _ in range(epoches):
+    # net input
+    z = np.dot(X_train_processed, w_old[1:]) + w_old[0]
+    # activation
+    z_clip = np.clip(z, a_min=-250, a_max=250)
+    z_act = 1. / (1. + np.exp(-z_clip))
+    # error
+    error = y_train - z_act
+    # gradient
+    gradient = - np.dot(X_train_processed.T, error)
+    # delta_weight: two-step
+    delta_w[1:] = - eta * gradient
+    delta_w[0] = eta * error.sum()
+    # update weight
+    w_new = w_old + delta_w
+    w_old = w_new
+    
+    # save cost value
+    cost = -np.dot(y_train, np.log(z_act)) - np.dot(1-y_train, np.log(1-z_act))
+    cost_values.append(cost)

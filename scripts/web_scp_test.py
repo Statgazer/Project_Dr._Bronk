@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 import json
 
 df = pd.DataFrame(columns=["URL"])
-URL=["http://www.chinadaily.com.cn","https://english.news.cn/home.htm"]
+URL = ["https://tass.com","http://www.chinadaily.com.cn"]
 File_Path = "/Users/roshen_abraham/Desktop/PC/RA/DR. CHRIS BRONK/project/target files/"
 
 for url in URL:
@@ -43,14 +43,15 @@ for url in URL:
         try:
             article = Article(link)
             article.download()
-            time.sleep(2)
+            time.sleep(1)
+            print("Dowloaded")
             article.parse()
             title_count+=1
 
             # if title_count == 10:
                 # break
 #####change#####-------------------------
-            if "Israel" in article.text or "Gaza" in article.text:
+            if "Gaza" in article.text:
                 article_data = {
                 "source": article.source_url,
                 "url": link,
@@ -68,7 +69,9 @@ for url in URL:
     
         except:
             pass
-    time.sleep(2)
+    time.sleep(1)
+    print("loop sleep")
+
  ####change#####-------------------------
     website_name = url.split("//")[-1].replace(".", "_")  # Convert website URL to a valid filename
     with open(f"{File_Path}{website_name}.json", 'w') as file:
